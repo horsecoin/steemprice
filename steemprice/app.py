@@ -1,8 +1,9 @@
+#!/bin/bash python3.7
 from flask import Flask, jsonify
 import click
 import redis
 import settings
-
+import os
 from update_rates import update, PoloniexAdapter, BittrexAdapter
 
 app = Flask(__name__)
@@ -28,3 +29,6 @@ def update_rates():
     """Update redis with the fresh rates."""
     update()
     click.echo('Updated rates.')
+	
+if __name__ == '__main__':
+		    app.run(debug=True)
